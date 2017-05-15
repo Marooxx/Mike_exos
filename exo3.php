@@ -1,7 +1,9 @@
 <?php
-
 if(!empty($_POST))
-{
+	{
+
+		if(!empty($_POST))
+	{	
 
 	$mike= explode(" ",rtrim($_POST["Mike"]));
 		// rtrim() permet de supprimer les espaces à la fin de la chaîne de caractère
@@ -33,16 +35,19 @@ if(!empty($_POST))
 		{
 			echo " Votre paramètres n'est pas un entier";
 		}
-	elseif(intval($mike[1]<0) || intval($mike[2]<0) )
-		{
-			echo " Vos paramètres ne sont pas admis";
-		}
+
 	else
 		{
-		echo "paramètre 1 : $mike[1] <br> paramètre 2 : $mike[2]";
+		echo "resultat : " .($mike[1] + $mike[2]);
 		}
-}
-// $val = int()"22"
+	}
+		
+		
+	}
+
+
+
+
 
 
 
