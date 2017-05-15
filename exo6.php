@@ -1,70 +1,55 @@
+
+
 <?php
-
-
-	if(!empty($_POST))
-		{	
-
+if(!empty($_POST))
+{
 	$mike= explode(" ",rtrim($_POST["Mike"]));
-		// rtrim() permet de supprimer les espaces à la fin de la chaîne de caractère
-		// trim() permet de supprimer les espaces au début et la fin de la chaîne caractére
 
-	if(count($mike)<3)// sans crochet , c'est qu'il y a qu'une seule instruction
+	if(count($mike)< 4)// sans crochet , c'est qu'il y a qu'une seule instruction
 		{
 		echo " Nombre de paramètre(s) pas assez important";
 		}
-	elseif(count($mike)>3)
+	else if(count($mike)> 4)
 		{
 		echo "Nombre de paramètre(s) sont trop importants";
 		}
-	elseif($mike[0] !="Mike")
+	else if($mike[0] !="Mike")
 		{
-		echo "Premier valeur incorrect";
-		}	
-	elseif(!ctype_digit($mike[1]))
-		{
-			echo "Votre paramètre $mike[1] n'est pas correct";
+			echo "Première valeur incorrecte";
 		}
-	elseif(!ctype_digit($mike[2]))
+	else if( !ctype_digit($mike[1]))
 		{
-			echo "votre paramètre $mike[2] n'est pas correct";
+			echo "Votre paramètre $mike[1] n'est pas correcte";
 		}
-	
-		
-		else
+	else if( !ctype_digit($mike[3]))
 		{
-			// Ternaire//**************** Correction***************
-			echo ($mike[1] > $mike[2])?"La puissance est $mike[1]": ($mike[2] > $mike[1])?"La puissance est $mike[2]":"equals";
-   		 }
+			echo "Votre paramètre $mike[3] n'est pas correcte";
+		}
+	else
+		{
+			switch($mike[2])
+			{
+				case "+":
+					echo ($mike[1] + $mike[3]);
+					break;
+				case "-":
+					echo ($mike[1] - $mike[3]);
+					break;
+				case "*":
+					echo ($mike[1] * $mike[3]);
+					break;
+				case "/":
+					echo ($mike[3] == 0)?"expression invalide" :($mike[1] / $mike[3]);
+					break;
+				default:
+					echo ($mike[1]%$mike[3]);
+					break;
+			}
+		}
 }
-
-		/********* Ce que j'ai fait *****************
-	
-	elseif( $mike[1]>$mike[2])
-		{
-		echo "Le plus grand est  : " . $mike[1];
-		}
-	elseif($mike[1]<$mike[2])
-		{
-			echo " le plus grand est : " . $mike[2];
-		}
-	elseif($mike[1] == $mike[2])
-		{
-			echo " equals";
-		}
-	*/
-	
-	
-
-		
-	
-
-
-
-
-
-
-
+// $val = int()"22"
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
