@@ -1,20 +1,18 @@
 <?php
-$val = "";
-if(!empty($_POST))
-	{
 
-		if(!empty($_POST))
-	{	
+
+	if(!empty($_POST))
+		{	
 
 	$mike= explode(" ",rtrim($_POST["Mike"]));
 		// rtrim() permet de supprimer les espaces à la fin de la chaîne de caractère
 		// trim() permet de supprimer les espaces au début et la fin de la chaîne caractére
 
-	if(count($mike)<2)// sans crochet , c'est qu'il y a qu'une seule instruction
+	if(count($mike)<3)// sans crochet , c'est qu'il y a qu'une seule instruction
 		{
 		echo " Nombre de paramètre(s) pas assez important";
 		}
-	elseif(count($mike)>2)
+	elseif(count($mike)>3)
 		{
 		echo "Nombre de paramètre(s) sont trop importants";
 		}
@@ -26,22 +24,39 @@ if(!empty($_POST))
 		{
 			echo "Votre paramètre $mike[1] n'est pas correct";
 		}
+	elseif(!ctype_digit($mike[2]))
+		{
+			echo "votre paramètre $mike[2] n'est pas correct";
+		}
 	
-	elseif($mike[1]%2)/* on divise le résultat de la variable par 2 -- si c'est un multiple de 2
-	on lance le echo*/ 
-
-		{
-			$val = "C' est impaire";
-		}
-
-	else// si le résultat n'est pas un multiple de 2 ** c'est impaire
-		{
-		$val = "C' est paire";
-		}
-	}
 		
+		else
+		{
+			// Ternaire
+			echo ($mike[1] > $mike[2])?"La puissance est $mike[1]": ($mike[2] > $mike[1])?"La puissance est $mike[2]":"equals";
+   		 }
+}
+
+		/********* Ce que j'ai fait 
+	
+	elseif( $mike[1]>$mike[2])
+		{
+		echo "Le plus grand est  : " . $mike[1];
+		}
+	elseif($mike[1]<$mike[2])
+		{
+			echo " le plus grand est : " . $mike[2];
+		}
+	elseif($mike[1] == $mike[2])
+		{
+			echo " equals";
+		}
+	*/
+	
+	
+//**************** Correction***************
 		
-	}
+	
 
 
 
@@ -73,7 +88,7 @@ if(!empty($_POST))
 				<form method="post">
 					<div class="form-group">
 						<label for="text">Entre votre valeur:</label>
-						<input type="text" class="form-control" id="Mike" name="Mike" <?php echo "value=".$val; ?> > 
+						<input type="text" class="form-control" id="Mike" name="Mike">
 					</div>
 					<button type="submit" class="btn btn-default">Submit</button>
 				</form>
