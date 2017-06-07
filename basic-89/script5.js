@@ -9,7 +9,7 @@ $(function()
 			$(this).prev().text('modification le texte');
 			$(this).prev().append('fdhdfhfdshsd');// 
 			
-			//$(this).text('Omar');// this va agir sur l'élément on veut cliquer
+			//$(this).text('Omar');// this va agir sur l'élément sur lequel on va  cliquer
 		});
 
 });
